@@ -1,36 +1,43 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+﻿/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { z } from "zod";
 import { toast } from "sonner";
 
 import { createFee, updateFee } from "@/services/fee.service";
-import { Fee } from "@/types/fee"; // Adjust path as needed
+import { Fee } from "@/types/fee";
 
-// Client-side schema matching the CreateFeeRequest structure
-const schema = z.object({
-  studentId: z.string().min(1, "Student ID is required"),
-  amount: z.coerce.number().positive("Amount must be a positive number"),
-  paymentDate: z.string().min(1, "Payment date is required"),
-  remarks: z.string().optional(),
-});
+const schema = (t: (key: string) => string) =>
+  z.object({
+    studentId: z.string().min(1, t("validation.studentIdRequired")),
+    amount: z.coerce.number().positive(t("validation.amountPositive")),
+    paymentDate: z.string().min(1, t("validation.paymentDateRequired")),
+    remarks: z.string().optional(),
+  });
 
-type FormData = z.infer<typeof schema>;
+type FormData = {
+  studentId: string;
+  amount: number;
+  paymentDate: string;
+  remarks?: string;
+};
 
 interface FeeFormProps {
-  fee?: Fee; // Using your real Fee interface for editing mode
+  fee?: Fee;
 }
 
 export function FeeForm({ fee }: FeeFormProps) {
   const isEdit = !!fee;
   const router = useRouter();
+  const t = useTranslations();
 
   const form = useForm<FormData>({
-    resolver: zodResolver(schema) as Resolver<FormData>,
+    resolver: zodResolver(schema(t)) as Resolver<FormData>,
     defaultValues: fee
       ? {
           studentId: fee.studentId,
@@ -48,7 +55,6 @@ export function FeeForm({ fee }: FeeFormProps) {
 
   const { errors, isSubmitting } = form.formState;
 
-  // Track fee updates if passed down asynchronously 
   useEffect(() => {
     if (fee) {
       form.reset({
@@ -64,10 +70,10 @@ export function FeeForm({ fee }: FeeFormProps) {
     try {
       if (isEdit && fee) {
         await updateFee(fee.id, values);
-        toast.success("Fee updated successfully.");
+        toast.success(t("feedback.feeUpdated"));
       } else {
         await createFee(values);
-        toast.success("Fee created successfully.");
+        toast.success(t("feedback.feeCreated"));
         form.reset();
       }
       router.refresh();
@@ -76,7 +82,6 @@ export function FeeForm({ fee }: FeeFormProps) {
 
       if (backendErrors) {
         Object.keys(backendErrors).forEach((serverKey) => {
-          // Normalizes case or falls back to key mapping matching your backend payload
           const formKey = serverKey.toLowerCase() as keyof FormData;
           const messages = backendErrors[serverKey];
 
@@ -94,74 +99,61 @@ export function FeeForm({ fee }: FeeFormProps) {
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 flex flex-col max-w-sm">
-      
+    <form onSubmit={form.handleSubmit(onSubmit)} className="flex max-w-sm flex-col space-y-4">
       {errors.root && (
-        <div className="text-red-600 bg-red-50 border border-red-200 p-3 rounded font-medium text-sm">
+        <div className="rounded border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-600">
           {errors.root.message}
         </div>
       )}
 
-      {/* Student ID */}
       <div className="flex flex-col">
-        <label className="text-sm font-medium mb-1">Student ID</label>
+        <label className="mb-1 text-sm font-medium">{t("labels.studentId")}</label>
         <input
           {...form.register("studentId")}
-          placeholder="e.g. STU12345"
-          className="border p-2 rounded w-full border-gray-300 focus:outline-blue-500"
+          placeholder={t("placeholders.studentId")}
+          className="w-full rounded border border-gray-300 p-2 focus:outline-blue-500"
         />
-        {errors.studentId && (
-          <p className="text-red-500 text-sm mt-1">{errors.studentId.message}</p>
-        )}
+        {errors.studentId && <p className="mt-1 text-sm text-red-500">{errors.studentId.message}</p>}
       </div>
 
-      {/* Amount */}
       <div className="flex flex-col">
-        <label className="text-sm font-medium mb-1">Amount</label>
+        <label className="mb-1 text-sm font-medium">{t("labels.amount")}</label>
         <input
           type="number"
           step="0.01"
           {...form.register("amount")}
-          placeholder="0.00"
-          className="border p-2 rounded w-full border-gray-300 focus:outline-blue-500"
+          placeholder={t("placeholders.amount")}
+          className="w-full rounded border border-gray-300 p-2 focus:outline-blue-500"
         />
-        {errors.amount && (
-          <p className="text-red-500 text-sm mt-1">{errors.amount.message}</p>
-        )}
+        {errors.amount && <p className="mt-1 text-sm text-red-500">{errors.amount.message}</p>}
       </div>
 
-      {/* Payment Date */}
       <div className="flex flex-col">
-        <label className="text-sm font-medium mb-1">Payment Date</label>
+        <label className="mb-1 text-sm font-medium">{t("labels.paymentDate")}</label>
         <input
           type="date"
           {...form.register("paymentDate")}
-          className="border p-2 rounded w-full border-gray-300 focus:outline-blue-500"
+          className="w-full rounded border border-gray-300 p-2 focus:outline-blue-500"
         />
-        {errors.paymentDate && (
-          <p className="text-red-500 text-sm mt-1">{errors.paymentDate.message}</p>
-        )}
+        {errors.paymentDate && <p className="mt-1 text-sm text-red-500">{errors.paymentDate.message}</p>}
       </div>
 
-      {/* Remarks */}
       <div className="flex flex-col">
-        <label className="text-sm font-medium mb-1">Remarks (Optional)</label>
+        <label className="mb-1 text-sm font-medium">{t("labels.remarks")}</label>
         <textarea
           {...form.register("remarks")}
-          placeholder="Add additional notes here..."
-          className="border p-2 rounded w-full border-gray-300 focus:outline-blue-500 resize-none h-20"
+          placeholder={t("placeholders.remarks")}
+          className="h-20 w-full resize-none rounded border border-gray-300 p-2 focus:outline-blue-500"
         />
-        {errors.remarks && (
-          <p className="text-red-500 text-sm mt-1">{errors.remarks.message}</p>
-        )}
+        {errors.remarks && <p className="mt-1 text-sm text-red-500">{errors.remarks.message}</p>}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:cursor-not-allowed disabled:bg-gray-400"
       >
-        {isSubmitting ? "Saving..." : isEdit ? "Update Fee" : "Create Fee"}
+        {isSubmitting ? t("buttons.saving") : isEdit ? t("fees.update") : t("fees.create")}
       </button>
     </form>
   );

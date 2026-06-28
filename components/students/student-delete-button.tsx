@@ -2,19 +2,21 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 import { deleteStudent } from "@/actions/student-actions";
 
 export function DeleteStudentButton({ id }: { id: string }) {
   const [isDeleting, setIsDeleting] = useState(false);
+  const t = useTranslations();
 
   const handleDelete = async () => {
     if (isDeleting) return;
     setIsDeleting(true);
     try {
       await deleteStudent(id);
-      toast.success("Student deleted successfully.");
+      toast.success(t("feedback.studentDeleted"));
     } catch {
-      toast.error("Failed to delete student.");
+      toast.error(t("feedback.studentDeleteFailed"));
     } finally {
       setIsDeleting(false);
     }
@@ -23,7 +25,7 @@ export function DeleteStudentButton({ id }: { id: string }) {
   return (
     <button
       type="button"
-      aria-label="Delete student"
+      aria-label={t("actions.deleteStudent")}
       className="inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white bg-red-800 rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
       onClick={handleDelete}
       disabled={isDeleting}

@@ -1,8 +1,88 @@
 {
-  "students": "طلبہ",
-  "fees": "فیس",
-  "addStudent": "طالب علم شامل کریں",
-  "name": "نام",
-  "email": "ای میل",
-  "phone": "فون"
+  "app": {
+    "title": "طالب علم فیس مینجمنٹ",
+    "language": "زبان",
+    "english": "انگریزی",
+    "urdu": "اردو",
+    "arabic": "عربی"
+  },
+  "menu": {
+    "title": "مینُو",
+    "students": "طلبہ",
+    "fees": "فیس"
+  },
+  "home": {
+    "title": "ہوم"
+  },
+  "students": {
+    "title": "طلبہ",
+    "add": "طالب علم شامل کریں",
+    "edit": "طالب علم ترمیم کریں",
+    "create": "طالب علم بنائیں",
+    "update": "طالب علم اپ ڈیٹ کریں"
+  },
+  "fees": {
+    "title": "فیس",
+    "add": "فیس شامل کریں",
+    "edit": "فیس ترمیم کریں",
+    "create": "فیس بنائیں",
+    "update": "فیس اپ ڈیٹ کریں"
+  },
+  "buttons": {
+    "saving": "محفوظ کیا جا رہا ہے..."
+  },
+  "labels": {
+    "fullName": "مکمل نام",
+    "name": "نام",
+    "email": "ای میل",
+    "phone": "فون",
+    "studentId": "طالب علم کی شناخت",
+    "amount": "رقم",
+    "paymentDate": "ادائیگی کی تاریخ",
+    "remarks": "تبصرے"
+  },
+  "placeholders": {
+    "name": "نام",
+    "email": "ای میل",
+    "phone": "فون",
+    "studentId": "مثال: STU12345",
+    "amount": "0.00",
+    "remarks": "یہاں نوٹس شامل کریں..."
+  },
+  "table": {
+    "id": "شناخت",
+    "name": "نام",
+    "email": "ای میل",
+    "phone": "فون",
+    "student": "طالب علم",
+    "amount": "رقم",
+    "paymentDate": "ادائیگی کی تاریخ",
+    "remarks": "تبصرے",
+    "actions": "عمل",
+    "noneRecord": "کوئی ریکارڈ نہیں ملا۔"
+  },
+  "feedback": {
+    "studentCreated": "طالب علم کامیابی کے ساتھ بنایا گیا.",
+    "studentUpdated": "طالب علم کامیابی سے اپ ڈیٹ ہوا.",
+    "studentDeleted": "طالب علم کامیابی سے حذف کیا گیا.",
+    "studentDeleteFailed": "طالب علم حذف کرنے میں ناکامی.",
+    "feeCreated": "فیس کامیابی کے ساتھ بن گئی.",
+    "feeUpdated": "فیس کامیابی سے اپ ڈیٹ ہوئی.",
+    "feeDeleted": "فیس کامیابی سے حذف ہو گئی.",
+    "feeDeleteFailed": "فیس حذف کرنے میں ناکامی."
+  },
+  "validation": {
+    "nameMin": "نام کم از کم 2 حروف کا ہونا چاہیے",
+    "studentIdRequired": "طالب علم کی شناخت ضروری ہے",
+    "amountPositive": "رقم مثبت ہونی چاہیے",
+ "paymentDateRequired": "ادائیگی کی تاریخ ضروری ہے"
+  },
+  "status": {
+    "none": "کوئی نہیں"
+  },
+  "actions": {
+    "deleteStudent": "طالب علم حذف کریں",
+    "deleteFee": "فیس حذف کریں",
+    "edit": "ترمیم"
+  }
 }

@@ -7,16 +7,17 @@ import {
 } from "@/components/ui/dialog";
 
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 import { FeeForm } from "./fee-form";
 
 export function CreateFeeDialog() {
+  const t = useTranslations("fees");
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>
-          Add Fee
-        </Button>
+        <Button>{t("add")}</Button>
       </DialogTrigger>
 
       <DialogContent>

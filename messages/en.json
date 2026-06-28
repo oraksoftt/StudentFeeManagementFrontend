@@ -1,8 +1,88 @@
 {
-  "students": "Students",
-  "fees": "Fees",
-  "addStudent": "Add Student",
-  "name": "Name",
-  "email": "Email",
-  "phone": "Phone"
+  "app": {
+    "title": "Student Fee Management",
+    "language": "Language",
+    "english": "English",
+    "urdu": "Urdu",
+    "arabic": "Arabic"
+  },
+  "menu": {
+    "title": "Menu",
+    "students": "Students",
+    "fees": "Fees"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "students": {
+    "title": "Students",
+    "add": "Add Student",
+    "edit": "Edit",
+    "create": "Create Student",
+    "update": "Update Student"
+  },
+  "fees": {
+    "title": "Fees",
+    "add": "Add Fee",
+    "edit": "Edit",
+    "create": "Create Fee",
+    "update": "Update Fee"
+  },
+  "buttons": {
+    "saving": "Saving..."
+  },
+  "labels": {
+    "fullName": "Full Name",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "studentId": "Student ID",
+    "amount": "Amount",
+    "paymentDate": "Payment Date",
+    "remarks": "Remarks"
+  },
+  "placeholders": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "studentId": "e.g. STU12345",
+    "amount": "0.00",
+    "remarks": "Add notes here..."
+  },
+  "table": {
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "student": "Student",
+    "amount": "Amount",
+    "paymentDate": "Payment Date",
+    "remarks": "Remarks",
+    "actions": "Actions",
+    "noneRecord": "No records found."
+  },
+  "feedback": {
+    "studentCreated": "Student created successfully.",
+    "studentUpdated": "Student updated successfully.",
+    "studentDeleted": "Student deleted successfully.",
+    "studentDeleteFailed": "Failed to delete student.",
+    "feeCreated": "Fee created successfully.",
+    "feeUpdated": "Fee updated successfully.",
+    "feeDeleted": "Fee deleted successfully.",
+    "feeDeleteFailed": "Failed to delete fee."
+  },
+  "validation": {
+    "nameMin": "Name must be at least 2 characters",
+    "studentIdRequired": "Student ID is required",
+    "amountPositive": "Amount must be a positive number",
+    "paymentDateRequired": "Payment date is required"
+  },
+  "status": {
+    "none": "None"
+  },
+  "actions": {
+    "deleteStudent": "Delete student",
+    "deleteFee": "Delete fee",
+    "edit": "Edit"
+  }
 }

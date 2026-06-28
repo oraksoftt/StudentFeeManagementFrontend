@@ -1,8 +1,88 @@
 {
-  "students": "الطلاب",
-  "fees": "الرسوم",
-  "addStudent": "إضافة طالب",
-  "name": "الاسم",
-  "email": "البريد الإلكتروني",
-  "phone": "الهاتف"
+  "app": {
+    "title": "إدارة رسوم الطلاب",
+    "language": "اللغة",
+    "english": "الإنجليزية",
+    "urdu": "الأردية",
+    "arabic": "العربية"
+  },
+  "menu": {
+    "title": "القائمة",
+    "students": "الطلاب",
+    "fees": "الرسوم"
+  },
+  "home": {
+    "title": "الرئيسية"
+  },
+  "students": {
+    "title": "الطلاب",
+    "add": "إضافة طالب",
+    "edit": "تحرير الطالب",
+    "create": "إنشاء طالب",
+    "update": "تحديث الطالب"
+  },
+  "fees": {
+    "title": "الرسوم",
+    "add": "إضافة رسم",
+    "edit": "تحرير الرسم",
+    "create": "إنشاء رسم",
+    "update": "تحديث الرسم"
+  },
+  "buttons": {
+    "saving": "جارٍ الحفظ..."
+  },
+  "labels": {
+    "fullName": "الاسم الكامل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "studentId": "معرّف الطالب",
+    "amount": "المبلغ",
+    "paymentDate": "تاريخ الدفع",
+    "remarks": "ملاحظات"
+  },
+  "placeholders": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "studentId": "مثال: STU12345",
+    "amount": "0.00",
+    "remarks": "أضف ملاحظات هنا..."
+  },
+  "table": {
+    "id": "المعرف",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "student": "الطالب",
+    "amount": "المبلغ",
+    "paymentDate": "تاريخ الدفع",
+    "remarks": "ملاحظات",
+    "actions": "الإجراءات",
+    "noneRecord": "لا يوجد سجلات."
+  },
+  "feedback": {
+    "studentCreated": "تم إنشاء الطالب بنجاح.",
+    "studentUpdated": "تم تحديث الطالب بنجاح.",
+    "studentDeleted": "تم حذف الطالب بنجاح.",
+    "studentDeleteFailed": "فشل حذف الطالب.",
+    "feeCreated": "تم إنشاء الرسم بنجاح.",
+    "feeUpdated": "تم تحديث الرسم بنجاح.",
+    "feeDeleted": "تم حذف الرسم بنجاح.",
+    "feeDeleteFailed": "فشل حذف الرسم."
+  },
+  "validation": {
+    "nameMin": "يجب أن يتكون الاسم من حرفين على الأقل",
+    "studentIdRequired": "معرّف الطالب مطلوب",
+    "amountPositive": "يجب أن يكون المبلغ رقمًا موجبًا",
+    "paymentDateRequired": "تاريخ الدفع مطلوب"
+  },
+  "status": {
+    "none": "لا شيء"
+  },
+  "actions": {
+    "deleteStudent": "حذف الطالب",
+    "deleteFee": "حذف الرسم",
+    "edit": "تحرير"
+  }
 }
